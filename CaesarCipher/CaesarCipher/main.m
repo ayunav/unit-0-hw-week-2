@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Mike Kavouras. All rights reserved.
 //
 
+//we want to know if two distinct looking ciphers correspond to the same input message. Write a method called codeBreaker, which accepts two cipher strings as paramaters and returns a boolean value which tells us whether they are actually the same input message encoded using two different offsets. hint: the maximum offset is 25
+
 #import <Foundation/Foundation.h>
 
 @interface CaesarCipher : NSObject
 
 - (NSString *)encode:(NSString *)string offset:(int)offset;
 - (NSString *)decode:(NSString *)string offset:(int)offset;
+//- (BOOL)codeBreaker:(NSString)
 
 @end
 
