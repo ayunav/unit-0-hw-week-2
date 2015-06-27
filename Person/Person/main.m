@@ -2,7 +2,7 @@
 //  main.m
 //  Person
 //
-//  Created by Michael Kavouras on 6/21/15.
+//  Created by Ayuna Vogel 🇷🇺🇺🇸 {{ in 💛 with 🚕 city }} on 6/21/15.
 //  Copyright (c) 2015 Mike Kavouras. All rights reserved.
 //
 
@@ -22,9 +22,11 @@
 -(BOOL)checkSameCity:(Person *)otherPerson;
 
 -(Person *)registerChild;
+
 -(void)claimChild:(Person *)claimedChild;
 
 -(void)setChild:(Person *)myNewChild;
+
 -(Person *)child;
 
 @end
@@ -93,32 +95,34 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        // scenario: adoption.
+        Person *aPerson = [[Person alloc] init];
+        [aPerson setName:@"Mary"];
+        [aPerson setCity:@"New York"];
+        [aPerson setPhoneNumber:@"3333333333"];
+        
+        Person *otherPerson = [[Person alloc] init];
+        [otherPerson setName:@"Kate"];
+        [otherPerson setCity:@"New Orleans"];
+        
+        NSLog(@"Do Mary and Kate live in the same city? %d", [otherPerson checkSameCity:aPerson]);
+        
+        Person *child = [aPerson registerChild];
+        NSLog(@"%@'s city is %@ and phone number is %@, same as Mary's", [child name], [child city], [child phoneNumber]);
+        
+        // scenario: adoption. Orange is the New Black, season 3.
         Person *biologicalMother = [[Person alloc] init];
-        [biologicalMother setName:@"Dayanara"];
+        [biologicalMother setName:@"Dayanara Diaz"];
         [biologicalMother setCity:@"Litchfield"];
-        [biologicalMother setPhoneNumber:@"347"];
+        [biologicalMother setPhoneNumber:@"123"];
         Person *newborn = [biologicalMother registerChild];
+        NSLog(@"Dayanara's baby's city is %@ and phone number is %@", [newborn city], [newborn phoneNumber]);
         
         Person *adoptedMother = [[Person alloc] init];
-        [adoptedMother setName:@"Delia"];
-        [adoptedMother setCity:@"Hoboken"];
-        [adoptedMother setPhoneNumber:@"911"];
+        [adoptedMother setName:@"Delia Mendez (Pornstache's mother)"];
+        [adoptedMother setCity:@"New York"];
+        [adoptedMother setPhoneNumber:@"456"];
         [adoptedMother claimChild:newborn];
-        
-        NSLog(@"");
-//        Person *aPerson = [[Person alloc] init];
-//        [aPerson setName:@"Ayuna"];
-//        [aPerson setCity:@"New York"];
-//        [aPerson setPhoneNumber:@"3473933326"];
-//        Person *aPersonChild = [aPerson registerChild];
-//        
-//        Person *otherPerson = [[Person alloc] init];
-//        [otherPerson setCity:@"New Orleans"];
-//        NSLog(@"%d", [otherPerson checkSameCity:aPerson]);
-//        
-//        Person *child = [[Person alloc] init];
-//        [child setName:@"Abc"];
+        NSLog(@"After Daya's mother lied to Delia Mendez, Pornstache's mother, that the baby was born dead, Caesar pickes up Dayanara's newborn from the hospital. Caesar gets arrested at the end of Season 3 (sorry for spoiler alert!), and the child is taken by the authorities. What's going to happen to the baby? Hopefully, Delia will find the child (?), and the baby's new city will be %@ and the phone number will be %@. Can't wait for Season 4! They are filiming an episode right by my house on Tuesday!!", [newborn city], [newborn phoneNumber]);
         
     }
     return 0;

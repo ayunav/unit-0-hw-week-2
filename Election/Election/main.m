@@ -2,7 +2,7 @@
 //  main.m
 //  Election
 //
-//  Created by Michael Kavouras on 6/21/15.
+//  Created by Ayuna Vogel 🇷🇺🇺🇸 {{ in 💛 with 🚕 city }} on 6/21/15.
 //  Copyright (c) 2015 Mike Kavouras. All rights reserved.
 //
 
@@ -198,13 +198,54 @@
     return answer != 0;
 }
 
+@end
+
+// VotingSimulator class
+@interface VotingSimulator : NSObject
+
+-(void)simulate;
 
 @end
 
+@implementation VotingSimulator
 
+-(void)simulate {
+    //        Create an Election object, and give the Election a name
+    Election *iceCreamElection = [[Election alloc]init];
+    [iceCreamElection setElectionName:@"Choose the best ice cream flavor ever!"];
+    
+    //        Create a few Contender objects. Add these to the Election object. Make sure that the contender names are distinct!
+    Contender *chocoholic = [[Contender alloc]init];
+    Contender *political = [[Contender alloc]init];
+    Contender *boring = [[Contender alloc]init];
+    
+    [chocoholic initWithName:@"Double chocolate chocolate chip with chocolate frosting please"];
+    [political initWithName:@"Rainbow sherbet #lovewins"];
+    [boring initWithName:@"Fat free vanilla frozen yogurt"];
+    
+    [iceCreamElection addContender:chocoholic];
+    [iceCreamElection addContender:political];
+    [iceCreamElection addContender:boring];
+
+    //        Create a ElectionManager object. Ask it to manage the Election object created above.
+    ElectionManager *manager = [[ElectionManager alloc]init];
+    [manager manage:iceCreamElection];
+    //        Ask the ElectionManager to initiatePolling
+    [manager initiatePolling];
+    //        Follow the instructions on the console. After each round of polling you will be asked(within the console) whether you want to continue or not.
+    //        Ask the ElectionManager to displayResults
+    [manager displayResults];
+
+}
+
+@end
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        
+        NSLog(@"Choose the best ice cream flavor ever!");
+        VotingSimulator *vSimulator = [[VotingSimulator alloc]init];
+        [vSimulator simulate];
         
     }
     return 0;
